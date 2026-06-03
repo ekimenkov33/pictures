@@ -1,18 +1,24 @@
- steps:
-      # Загрузка кода из репозитория (убраны скобки)
-      - uses: actions/checkout@v4 
+name: Release Node.js app
 
-      # Авторизация в Docker Hub 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Сборка и отправка (push) образа
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          # Не забудьте указать ваш логин Docker Hub здесь
-          tags: ваш_логин/express_app:latest
+          tags: ВАШ_ЛОГИН/express_app:latest

@@ -1,0 +1,35 @@
+    git commit --amend --reset-author
+
+ 1 file changed, 82 insertions(+)
+ create mode 100644 .github/workflows/deploy.yml
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git push -u origin main        
+Username for 'https://github.com': ikm4n
+Password for 'https://ikm4n@github.com': 
+remote: Repository not found.
+fatal: repository 'https://github.com/ekimenkov33/devops-ex-3-1.git/' not found
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git remote add origin https://github.com/ekimenkov33/3_task.git       
+error: внешний репозиторий origin уже существует
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git remote add master  https://github.com/ekimenkov33/3_task.git
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git add .                                                   
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git commit -m "Настройка CI/CD"                                 
+Текущая ветка: main
+нечего коммитить, нет изменений в рабочем каталоге
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]
+└─$ git push -u master main                                         
+Username for 'https://github.com': ikm4n
+Password for 'https://ikm4n@github.com': 
+remote: Permission to ekimenkov33/3_task.git denied to ekimenkov33.
+fatal: «https://github.com/ekimenkov33/3_task.git/» недоступно: The requested URL returned error: 403
+                                                                                                                                                                                                                                              
+┌──(ekim㉿kali)-[~/3_1/express_app]

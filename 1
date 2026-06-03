@@ -1,14 +1,1 @@
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: ВАШ_ЛОГИН/express_app:latest
+fm2_lJPECAAAAAAAFKu/xBCmPZKJy08WkJ5tA68jjgdKwrVodHRwczovL2FwaS5mbHkuaW8vdjGUAJLOABmpBR8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDyijFud1ovNOPNWRsod3QyFqeZzSSNoV5gNOm/5ohZpltqYHR1dSQ9NZBKmUDdRTj3t5PvpMVewqFUNYqjETvbVyZm/vauZFj3UZKLcv6QJNwK/j/ZM6GLDBGHZiNPQhMP8tlbLj9l7Qaw/v8NMMUFm3mDB6FomxtzifMeVrtoTSA2jUGL5W09iuiKOYsQg9H2KM8BgplsGfB8AwwZdp3n+mObRuLzr0DJoKfmGBXU=,fm2_lJPETvbVyZm/vauZFj3UZKLcv6QJNwK/j/ZM6GLDBGHZiNPQhMP8tlbLj9l7Qaw/v8NMMUFm3mDB6FomxtzifMeVrtoTSA2jUGL5W09iuiKOYsQQW6RokqJnxt4iMZgbmKlZr8O5aHR0cHM6Ly9hcGkuZmx5LmlvL2FhYS92MZgEks5qH/oKzmof/IAXzgAYlG4Kkc4AGJRuDMQQMCSSTOjN1Oyml4XqJgr3TcQgR4vKcfWQ3LLNas6WOJTePDi3omDSQvUt/K+wEA6ZKoE=,fo1_4aj16tdyVanQdonN0P69_H2L4Tx2EwN4I3RcyndzEoQ

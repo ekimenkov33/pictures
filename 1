@@ -1,24 +1,22 @@
 #!/bin/bash
 
-# Скрипт принимает два аргумента: $1 — репозиторий GitHub, $2 — репозиторий Docker Hub [2].
 GITHUB_REPO=$1
 DOCKER_REPO=$2
 
-echo "1. Загружаем репозиторий $GITHUB_REPO с GitHub..."
-# Клонируем исходный код по ссылке во временную папку с названием "temp_repo" [3]
+echo "Клонируем репозиторий $GITHUB_REPO..."
 git clone https://github.com/$GITHUB_REPO.git temp_repo
-
-echo "2. Переходим в скачанную папку..."
 cd temp_repo
 
-echo "3. Собираем Docker-образ с тегом $DOCKER_REPO..."
-# Собираем образ из Dockerfile, расположенного в корне [1, 2]
+echo "Собираем Docker-образ..."
 docker build -t $DOCKER_REPO .
 
-echo "4. Отправляем образ в Docker Hub..."
-# Публикуем собранный образ [2]
+echo "Авторизуемся в Docker Hub..."
+# Скрипт использует переменные окружения для входа
+docker login -u "$DOCKER_USER" -p "$DOCKER_PWD"
+
+echo "Отправляем образ..."
 docker push $DOCKER_REPO
 
-echo "Уборка: удаляем временную папку..."
 cd ..
 rm -rf temp_repo
+echo "Готово!"

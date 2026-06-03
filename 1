@@ -1,22 +1,14 @@
-#!/bin/bash
+# Используем официальный образ docker, в котором уже установлена сама утилита Docker
+FROM docker:latest
 
-GITHUB_REPO=$1
-DOCKER_REPO=$2
+# Устанавливаем bash и git (они нужны для работы нашего скрипта)
+RUN apk add --no-cache bash git
 
-echo "Клонируем репозиторий $GITHUB_REPO..."
-git clone https://github.com/$GITHUB_REPO.git temp_repo
-cd temp_repo
+# Копируем наш скрипт внутрь контейнера
+COPY builder.sh /builder.sh
 
-echo "Собираем Docker-образ..."
-docker build -t $DOCKER_REPO .
+# Делаем скрипт исполняемым
+RUN chmod +x /builder.sh
 
-echo "Авторизуемся в Docker Hub..."
-# Скрипт использует переменные окружения для входа
-docker login -u "$DOCKER_USER" -p "$DOCKER_PWD"
-
-echo "Отправляем образ..."
-docker push $DOCKER_REPO
-
-cd ..
-rm -rf temp_repo
-echo "Готово!"
+# Назначаем скрипт точкой входа (он будет запускаться при старте контейнера)
+ENTRYPOINT ["/builder.sh"]
